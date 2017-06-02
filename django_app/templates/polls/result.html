@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>{{ question.question_text }}</h1>
+    {% if messages %}
+    {% for message in messages %}
+<p><strong>{{ message }}</strong></p>
+    {% endfor %}
+    {% endif %}
+<ul>
+    {% for choice in question.choice_set.all %}
+    <li>
+        <span>{{ choice.choice_text }}:{{ choice.votes }}번</span>
+    </li>
+    {% endfor %}
+
+    <a href="{% url 'polls:detail' question.id%}">Vote again</a>
+</ul>
+</body>
+</html>
